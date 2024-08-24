@@ -32,6 +32,7 @@ pip install flask gunicorn requests
 cp -r "$APP_PATH/alpha-link.service" /etc/systemd/system/
 
 # Start the service
+systemctl daemon-reload
 systemctl start alpha-link.service
 
 # Optional: enable the service to start on boot
