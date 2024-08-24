@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if the script is run as root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "This script must be run as root." >&2
+    exit 1
+fi
+
 # Define the path
 TARGET_PATH="/opt/snb-tech"
 APP_PATH="$TARGET_PATH/Alpha-link-app"
@@ -23,12 +29,12 @@ source venu/bin/activate
 pip install flask gunicorn
 
 # Copy the service file to the systemd directory
-sudo cp -r "$APP_PATH/alpha-link.service" /etc/systemd/system/
+cp -r "$APP_PATH/alpha-link.service" /etc/systemd/system/
 
 # Start the service
-sudo systemctl start alpha-link.service
+systemctl start alpha-link.service
 
 # Optional: enable the service to start on boot
-sudo systemctl enable alpha-link.service
+systemctl enable alpha-link.service
 
 echo "Setup complete."
