@@ -26,7 +26,7 @@ python3 -m venv venu
 source venu/bin/activate
 
 # Install necessary Python packages
-pip install flask gunicorn
+pip install flask gunicorn requests
 
 # Copy the service file to the systemd directory
 cp -r "$APP_PATH/alpha-link.service" /etc/systemd/system/
