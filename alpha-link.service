@@ -1,0 +1,15 @@
+[Unit]
+Description=SNB-TECH ALPHA
+After=network.target
+
+[Service]
+#User=bfarooq
+#Group=bfarooq
+WorkingDirectory=/opt/snb-tech/Alpha-link-app
+ExecStart=/opt/snb-tech/venu/bin/gunicorn -w 2 -b 0.0.0.0:8080 Alpha-link:app
+Restart=always
+Environment="PATH=/opt/snb-tech/Alpha-link-app/venu/bin"
+Environment="FLASK_ENV=production"
+
+[Install]
+WantedBy=multi-user.target
