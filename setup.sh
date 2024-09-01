@@ -9,8 +9,9 @@ fi
 # Define the path
 TARGET_PATH="/opt/snb-tech"
 APP_PATH="$TARGET_PATH/Alpha-link-app"
+VENV_PATH="$APP_PATH/venu"
 
-# Create the directory if it does not exist
+# Create the target directory if it does not exist
 if [ ! -d "$TARGET_PATH" ]; then
     mkdir -p "$TARGET_PATH"
 fi
@@ -22,8 +23,8 @@ unzip Alpha-link-app.zip -d "$TARGET_PATH"
 cd "$APP_PATH" || { echo "Application directory not found"; exit 1; }
 
 # Set up Python virtual environment
-python3 -m venv venu
-source venu/bin/activate
+python3 -m venv "$VENV_PATH"
+source "$VENV_PATH/bin/activate"
 
 # Install necessary Python packages
 pip install flask gunicorn requests
